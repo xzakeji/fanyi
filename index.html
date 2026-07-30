@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在线翻译器 | 单词句子一键翻译</title>
+    <title>在线翻译器 | fanyi.xzakeji.icu</title>
+    <!-- Favicon图标配置 -->
+    <link rel="icon" href="/favicon_001.ico" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -27,6 +29,7 @@
             gap: 12px;
             margin-bottom: 16px;
             align-items: center;
+            justify-content: center;
         }
         select, button {
             padding: 10px 14px;
@@ -121,7 +124,7 @@
         const clearBtn = document.getElementById('clearBtn');
         const copyBtn = document.getElementById('copyBtn');
 
-        // 翻译核心函数（免费开源deepl公共中转接口，单词长句通用）
+        // 翻译核心函数
         async function runTranslate() {
             const text = inputText.value.trim();
             if (!text) {
@@ -130,7 +133,6 @@
             }
             outputText.value = "翻译加载中...";
             try {
-                // 免费公共翻译接口，无需密钥
                 const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang.value}|${toLang.value}`);
                 const data = await res.json();
                 outputText.value = data.responseData.translatedText;
@@ -139,7 +141,7 @@
             }
         }
 
-        // 翻译按钮点击
+        // 点击翻译按钮
         translateBtn.addEventListener('click', runTranslate);
         // 回车快捷翻译
         inputText.addEventListener('keydown', e => {
