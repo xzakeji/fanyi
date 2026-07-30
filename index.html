@@ -2,118 +2,243 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在线翻译器 | fanyi.xzakeji.icu</title>
-    <!-- Favicon图标配置 -->
-    <link rel="icon" href="/favicon_001.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>火箭翻译 - 免费在线中英日韩单词句子翻译工具 fanyi.xzakeji.icu</title>
+    <link rel="canonical" href="https://fanyi.xzakeji.icu/">
+    <link rel="icon" href="/favicon_001.ico" sizes="any" type="image/x-icon">
+    <link rel="icon" href="/favicon_001.ico" sizes="32x32">
+    <link rel="icon" href="/favicon_001.ico" sizes="16x16">
+    <link rel="apple-touch-icon" href="/favicon_001.ico">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="火箭翻译是免费在线翻译网站，支持中文、英语、日语、韩语互译，单词、短句、长段落一键翻译，无需注册，复制译文，访问地址fanyi.xzakeji.icu。">
+    <meta name="keywords" content="火箭翻译,在线翻译,免费翻译,中英翻译,单词翻译,句子翻译,中日翻译,中韩翻译,翻译工具">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="火箭翻译 - 免费在线中英日韩单词句子翻译工具">
+    <meta property="og:description" content="火箭翻译免费在线翻译，支持中英日韩互译，单词、长句一键翻译，免登录直接使用。">
+    <meta property="og:url" content="https://fanyi.xzakeji.icu/">
+    <meta property="og:site_name" content="火箭翻译">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "火箭翻译",
+        "url": "https://fanyi.xzakeji.icu/",
+        "description": "火箭翻译免费在线翻译工具，支持中英日韩单词、句子段落翻译",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://fanyi.xzakeji.icu/",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, sans-serif;
+            font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
         }
         body {
-            background: #f0f4f8;
-            padding: 40px 20px;
-            max-width: 900px;
+            background: linear-gradient(135deg, #eef2ff 0%, #f0f4f8 100%);
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+        .container {
+            max-width: 920px;
             margin: 0 auto;
+        }
+        .card-box {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+            padding: 36px 30px;
         }
         h1 {
             text-align: center;
-            color: #1a73e8;
-            margin-bottom: 30px;
+            background: linear-gradient(90deg, #2563eb, #f97316);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .sub-title {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 36px;
+            font-size: 16px;
         }
         .switch-row {
             display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 16px;
+            margin-bottom: 24px;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
         }
-        select, button {
-            padding: 10px 14px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            font-size: 15px;
+        select {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            font-size: 16px;
+            min-width: 160px;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        button {
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 500;
+        }
+        button:active {
+            transform: scale(0.96);
+        }
+        #swapLangBtn {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+        }
+        #swapLangBtn:hover {
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.35);
         }
         .box-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 24px;
+            margin-bottom: 26px;
         }
         textarea {
             width: 100%;
-            min-height: 220px;
-            padding: 16px;
-            border: 1px solid #dadce0;
-            border-radius: 8px;
+            min-height: 240px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
             font-size: 16px;
             resize: vertical;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
             background: #fff;
         }
         .btn-group {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         #translateBtn {
-            background: #1a73e8;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             color: white;
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+        #translateBtn:hover {
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
         #clearBtn {
-            background: #fff;
-            color: #555;
-            cursor: pointer;
+            background: #f1f5f9;
+            color: #334155;
+        }
+        #clearBtn:hover {
+            background: #e2e8f0;
         }
         #copyBtn {
-            background: #34a853;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
             color: white;
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+        }
+        #copyBtn:hover {
+            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
         }
         .tip {
-            margin-top: 16px;
-            color: #666;
+            margin-top: 20px;
+            color: #64748b;
             font-size: 14px;
             text-align: center;
+        }
+        .intro-text {
+            margin-top: 40px;
+            line-height: 1.9;
+            color: #334155;
+        }
+        .intro-text h2 {
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+        .intro-text p {
+            margin-bottom: 12px;
+        }
+        /* 移动端自适应 */
+        @media(max-width:640px){
+            .box-wrap{
+                grid-template-columns:1fr;
+            }
+            h1{
+                font-size:32px;
+            }
+            .switch-row{
+                flex-direction:column;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>简易在线翻译器</h1>
+    <div class="container">
+        <div class="card-box">
+            <h1>火箭翻译</h1>
+            <p class="sub-title">免费在线中英日韩互译工具 | 单词、短句、长文本一键翻译</p>
 
-    <div class="switch-row">
-        <select id="fromLang">
-            <option value="zh">中文</option>
-            <option value="en">英语</option>
-            <option value="ja">日语</option>
-            <option value="ko">韩语</option>
-        </select>
-        <span>⇄</span>
-        <select id="toLang">
-            <option value="en">英语</option>
-            <option value="zh">中文</option>
-            <option value="ja">日语</option>
-            <option value="ko">韩语</option>
-        </select>
+            <div class="switch-row">
+                <select id="fromLang">
+                    <option value="zh">中文</option>
+                    <option value="en">英语</option>
+                    <option value="ja">日语</option>
+                    <option value="ko">韩语</option>
+                </select>
+                <button id="swapLangBtn">⇄ 互换语言</button>
+                <select id="toLang">
+                    <option value="en">英语</option>
+                    <option value="zh">中文</option>
+                    <option value="ja">日语</option>
+                    <option value="ko">韩语</option>
+                </select>
+            </div>
+
+            <div class="box-wrap">
+                <textarea id="inputText" placeholder="在此输入单词、短句、长段落..."></textarea>
+                <textarea id="outputText" readonly placeholder="翻译结果将在这里展示"></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button id="translateBtn">开始翻译</button>
+                <button id="clearBtn">清空内容</button>
+                <button id="copyBtn">复制译文</button>
+            </div>
+
+            <div class="tip">支持单词/整句翻译，免费在线翻译接口 | 访问地址：fanyi.xzakeji.icu</div>
+
+            <div class="intro-text">
+                <h2>火箭翻译使用说明</h2>
+                <p>火箭翻译是一款轻量化免费在线翻译网站，无需下载软件、无需注册登录，打开网页即可使用。支持中文、英语、日语、韩语四种语言双向翻译，点击中间【互换语言】按钮即可快速切换翻译方向，不用手动下拉选择。不管是单个英文单词、语文短句，还是作文、小说长段落文本都能快速完成翻译。学生写作业、职场阅读外文资料、日常海外交流都可以使用火箭翻译。</p>
+                <p>网站地址 fanyi.xzakeji.icu，全程HTTPS加密访问，页面加载速度快，海外访问稳定，国外朋友也能流畅使用翻译功能。支持回车快捷翻译，一键复制翻译结果，操作简单方便。</p>
+            </div>
+        </div>
     </div>
-
-    <div class="box-wrap">
-        <textarea id="inputText" placeholder="输入单词、短句、长段落均可"></textarea>
-        <textarea id="outputText" readonly placeholder="翻译结果会显示在这里"></textarea>
-    </div>
-
-    <div class="btn-group">
-        <button id="translateBtn">开始翻译</button>
-        <button id="clearBtn">清空内容</button>
-        <button id="copyBtn">复制译文</button>
-    </div>
-
-    <div class="tip">支持单词/整句翻译，免费在线翻译接口</div>
 
     <script>
         const inputText = document.getElementById('inputText');
@@ -123,8 +248,8 @@
         const translateBtn = document.getElementById('translateBtn');
         const clearBtn = document.getElementById('clearBtn');
         const copyBtn = document.getElementById('copyBtn');
+        const swapLangBtn = document.getElementById('swapLangBtn');
 
-        // 翻译核心函数
         async function runTranslate() {
             const text = inputText.value.trim();
             if (!text) {
@@ -141,9 +266,18 @@
             }
         }
 
-        // 点击翻译按钮
+        // 互换语言+互换文本
+        swapLangBtn.addEventListener('click', () => {
+            const tempLang = fromLang.value;
+            fromLang.value = toLang.value;
+            toLang.value = tempLang;
+
+            const tempTxt = inputText.value;
+            inputText.value = outputText.value;
+            outputText.value = tempTxt;
+        })
+
         translateBtn.addEventListener('click', runTranslate);
-        // 回车快捷翻译
         inputText.addEventListener('keydown', e => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -151,13 +285,11 @@
             }
         })
 
-        // 清空按钮
         clearBtn.addEventListener('click', () => {
             inputText.value = '';
             outputText.value = '';
         })
 
-        // 复制译文
         copyBtn.addEventListener('click', async () => {
             if (!outputText.value) return;
             await navigator.clipboard.writeText(outputText.value);
