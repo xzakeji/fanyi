@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>火箭翻译 - 免费在线中英日韩单词句子翻译工具 fanyi.xzakeji.icu</title>
+    <title>Rocket Translate - 火箭翻译 | Simplified/Traditional Chinese & English Translator</title>
     <link rel="canonical" href="https://fanyi.xzakeji.icu/">
     <link rel="icon" href="/favicon_001.ico" sizes="any" type="image/x-icon">
     <link rel="icon" href="/favicon_001.ico" sizes="32x32">
     <link rel="icon" href="/favicon_001.ico" sizes="16x16">
     <link rel="apple-touch-icon" href="/favicon_001.ico">
     <meta name="theme-color" content="#2563eb">
-    <meta name="description" content="火箭翻译是免费在线翻译网站，支持中文、英语、日语、韩语互译，单词、短句、长段落一键翻译，无需注册，复制译文，访问地址fanyi.xzakeji.icu。">
-    <meta name="keywords" content="火箭翻译,在线翻译,免费翻译,中英翻译,单词翻译,句子翻译,中日翻译,中韩翻译,翻译工具">
+    <meta name="description" content="Rocket Translate/火箭翻译 免费在线翻译，支持简体中文、繁体中文、英语互译，一键切换网站界面中英文，无需注册登录。">
+    <meta name="keywords" content="火箭翻译,Rocket Translate,简繁转换,中英翻译,Simplified Chinese,Traditional Chinese,English Translator">
     <meta name="robots" content="index,follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="火箭翻译 - 免费在线中英日韩单词句子翻译工具">
-    <meta property="og:description" content="火箭翻译免费在线翻译，支持中英日韩互译，单词、长句一键翻译，免登录直接使用。">
+    <meta property="og:title" content="Rocket Translate - 火箭翻译 简繁中英翻译工具">
+    <meta property="og:description" content="支持简体、繁体、英文互译，界面一键中英文切换，一键互换翻译语种">
     <meta property="og:url" content="https://fanyi.xzakeji.icu/">
-    <meta property="og:site_name" content="火箭翻译">
+    <meta property="og:site_name" content="火箭翻译 | Rocket Translate">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "火箭翻译",
+        "name": "火箭翻译 Rocket Translate",
         "url": "https://fanyi.xzakeji.icu/",
-        "description": "火箭翻译免费在线翻译工具，支持中英日韩单词、句子段落翻译",
+        "description": "免费在线翻译工具，支持简体中文、繁体中文、英语互译，界面中英文切换",
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://fanyi.xzakeji.icu/",
@@ -37,7 +37,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
+            font-family: system-ui, -apple-system, Arial, "Microsoft YaHei", sans-serif;
         }
         body {
             background: linear-gradient(135deg, #eef2ff 0%, #f0f4f8 100%);
@@ -53,6 +53,16 @@
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
             padding: 36px 30px;
+        }
+        .lang-switch-wrap {
+            text-align: right;
+            margin-bottom: 16px;
+        }
+        #uiLangSwitch {
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            cursor: pointer;
         }
         h1 {
             text-align: center;
@@ -82,7 +92,7 @@
             border-radius: 12px;
             border: 1px solid #e2e8f0;
             font-size: 16px;
-            min-width: 160px;
+            min-width: 220px;
             background: #f8fafc;
             transition: all 0.25s ease;
             cursor: pointer;
@@ -117,6 +127,11 @@
             grid-template-columns: 1fr 1fr;
             gap: 24px;
             margin-bottom: 26px;
+        }
+        .box-title {
+            margin-bottom:8px;
+            font-weight:500;
+            color:#334155;
         }
         textarea {
             width: 100%;
@@ -180,8 +195,14 @@
             color: #1e293b;
             margin-bottom: 12px;
         }
-        .intro-text p {
-            margin-bottom: 12px;
+        .statement-box {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
         }
         /* 移动端自适应 */
         @media(max-width:640px){
@@ -195,47 +216,113 @@
                 flex-direction:column;
             }
         }
+        /* 英文界面隐藏中文内容 */
+        .lang-en .zh-text { display: none; }
+        .lang-zh .en-text { display: none; }
     </style>
 </head>
-<body>
+<body class="lang-zh">
     <div class="container">
         <div class="card-box">
-            <h1>火箭翻译</h1>
-            <p class="sub-title">免费在线中英日韩互译工具 | 单词、短句、长文本一键翻译</p>
+            <!-- 界面语言切换下拉（切换全站操作文字，不改变翻译语种） -->
+            <div class="lang-switch-wrap">
+                <select id="uiLangSwitch">
+                    <option value="zh">中文界面 / Chinese UI</option>
+                    <option value="en">英文界面 / English UI</option>
+                </select>
+            </div>
+
+            <h1>
+                <span class="zh-text">火箭翻译</span>
+                <span class="en-text">Rocket Translate</span>
+            </h1>
+            <p class="sub-title">
+                <span class="zh-text">简繁中英在线翻译工具 | 点击⇄互换翻译语种</span>
+                <span class="en-text">Free Translator for Simplified/Traditional Chinese & English | Click ⇄ Swap Languages</span>
+            </p>
 
             <div class="switch-row">
+                <!-- 【翻译语种固定不变】三选一：简中 / 繁中 / English -->
                 <select id="fromLang">
-                    <option value="zh">中文</option>
-                    <option value="en">英语</option>
-                    <option value="ja">日语</option>
-                    <option value="ko">韩语</option>
+                    <option value="zh-CN">Simplified Chinese (简体中文)</option>
+                    <option value="zh-TW">Traditional Chinese (繁體中文)</option>
+                    <option value="en">English</option>
                 </select>
-                <button id="swapLangBtn">⇄ 互换语言</button>
+                <button id="swapLangBtn">
+                    <span class="zh-text">⇄ 互换语种</span>
+                    <span class="en-text">⇄ Swap</span>
+                </button>
                 <select id="toLang">
-                    <option value="en">英语</option>
-                    <option value="zh">中文</option>
-                    <option value="ja">日语</option>
-                    <option value="ko">韩语</option>
+                    <option value="en">English</option>
+                    <option value="zh-CN">Simplified Chinese (简体中文)</option>
+                    <option value="zh-TW">Traditional Chinese (繁體中文)</option>
                 </select>
             </div>
 
             <div class="box-wrap">
-                <textarea id="inputText" placeholder="在此输入单词、短句、长段落..."></textarea>
-                <textarea id="outputText" readonly placeholder="翻译结果将在这里展示"></textarea>
+                <div>
+                    <div class="box-title">
+                        <span class="zh-text">输入文本</span>
+                        <span class="en-text">Input Text</span>
+                    </div>
+                    <textarea id="inputText" placeholder="
+<span class='zh-text'>输入简体中文、繁体中文或英文文本...</span>
+<span class='en-text'>Type Simplified Chinese, Traditional Chinese or English text here...</span>"></textarea>
+                </div>
+                <div>
+                    <div class="box-title">
+                        <span class="zh-text">翻译结果</span>
+                        <span class="en-text">Translation Result</span>
+                    </div>
+                    <textarea id="outputText" readonly placeholder="
+<span class='zh-text'>转换后的文字将展示在此处</span>
+<span class='en-text'>Translated text will show here"></textarea>
+                </div>
             </div>
 
             <div class="btn-group">
-                <button id="translateBtn">开始翻译</button>
-                <button id="clearBtn">清空内容</button>
-                <button id="copyBtn">复制译文</button>
+                <button id="translateBtn">
+                    <span class="zh-text">开始翻译</span>
+                    <span class="en-text">Translate Now</span>
+                </button>
+                <button id="clearBtn">
+                    <span class="zh-text">清空全部</span>
+                    <span class="en-text">Clear All</span>
+                </button>
+                <button id="copyBtn">
+                    <span class="zh-text">复制译文</span>
+                    <span class="en-text">Copy Result</span>
+                </button>
             </div>
 
-            <div class="tip">支持单词/整句翻译，免费在线翻译接口 | 访问地址：fanyi.xzakeji.icu</div>
+            <div class="tip">
+                <span class="zh-text">支持简繁互转、中英双向翻译，免费在线文本转换工具 | fanyi.xzakeji.icu</span>
+                <span class="en-text">Support Simplified ↔ Traditional Chinese, Chinese ↔ English bidirectional translation | fanyi.xzakeji.icu</span>
+            </div>
 
             <div class="intro-text">
-                <h2>火箭翻译使用说明</h2>
-                <p>火箭翻译是一款轻量化免费在线翻译网站，无需下载软件、无需注册登录，打开网页即可使用。支持中文、英语、日语、韩语四种语言双向翻译，点击中间【互换语言】按钮即可快速切换翻译方向，不用手动下拉选择。不管是单个英文单词、语文短句，还是作文、小说长段落文本都能快速完成翻译。学生写作业、职场阅读外文资料、日常海外交流都可以使用火箭翻译。</p>
-                <p>网站地址 fanyi.xzakeji.icu，全程HTTPS加密访问，页面加载速度快，海外访问稳定，国外朋友也能流畅使用翻译功能。支持回车快捷翻译，一键复制翻译结果，操作简单方便。</p>
+                <h2>
+                    <span class="zh-text">火箭翻译使用指南</span>
+                    <span class="en-text">How to Use Rocket Translate</span>
+                </h2>
+                <p class="zh-text">
+                    火箭翻译是轻量化免费在线翻译网站，无需下载软件、无需注册登录，打开网页即可使用。支持简体中文、繁体中文、英语三类语言自由转换，两个语言选择框中间设有【⇄互换语种】按钮，一键交换源语言与目标语言，同时同步交换输入、输出文本。
+                </p>
+                <p class="en-text">
+                    Rocket Translate is a lightweight free online translation tool. No software download or registration required, you can use it directly in your browser. It supports translation between Simplified Chinese, Traditional Chinese and English. Click the ⇄ Swap button to instantly exchange source and target languages, and swap text between input and output boxes automatically.
+                </p>
+                <p class="zh-text">
+                    日常简繁体文字转换、中英文阅读写作翻译都可使用，支持长段落、短句、单词快速解析，按下回车键可快捷执行翻译操作，一键复制转换结果，操作简单流畅。网站采用移动端自适应界面，手机、电脑均可舒适使用。
+                </p>
+                <p class="en-text">
+                    Perfect for daily Chinese-English writing & reading, Simplified / Traditional Chinese text conversion. Press Enter key to trigger quick translation, one-click copy translation results. Fully responsive design works smoothly on mobile phones and desktop computers.
+                </p>
+            </div>
+
+            <!-- 新增网站声明区块，带指定邮箱 -->
+            <div class="statement-box">
+                <p class="zh-text">网站声明：火箭翻译仅提供免费文本在线翻译工具，本站服务器位于海外，暂未办理国内ICP备案，仅提供文字翻译技术服务，不存储用户隐私内容。若有内容问题可联系站长反馈：nameiszcy@126.com。</p>
+                <p class="en-text">Site Statement: Rocket Translate only provides free online text translation tools. The server is located overseas and has not completed domestic ICP filing. It only provides text translation technical services and does not store users' private data. Contact webmaster for any issues: nameiszcy@126.com.</p>
             </div>
         </div>
     </div>
@@ -249,24 +336,41 @@
         const clearBtn = document.getElementById('clearBtn');
         const copyBtn = document.getElementById('copyBtn');
         const swapLangBtn = document.getElementById('swapLangBtn');
+        const uiLangSwitch = document.getElementById('uiLangSwitch');
+        const bodyDom = document.body;
 
+        // 读取本地存储用户上次界面语言，自动加载
+        let savedUiLang = localStorage.getItem('rocketTranslateUiLang') || 'zh';
+        bodyDom.className = `lang-${savedUiLang}`;
+        uiLangSwitch.value = savedUiLang;
+
+        // 切换界面语言（只改按钮/标题/说明文字，翻译语种下拉完全不动）
+        uiLangSwitch.addEventListener('change', function(){
+            const selectedLang = this.value;
+            bodyDom.className = `lang-${selectedLang}`;
+            localStorage.setItem('rocketTranslateUiLang', selectedLang);
+        })
+
+        // 翻译接口函数
         async function runTranslate() {
             const text = inputText.value.trim();
             if (!text) {
-                alert('请输入需要翻译的内容');
+                if(bodyDom.classList.contains('lang-zh')) alert('请输入需要转换的文字内容');
+                else alert('Please enter text to translate');
                 return;
             }
-            outputText.value = "翻译加载中...";
+            outputText.value = bodyDom.classList.contains('lang-zh') ? "转换加载中..." : "Loading translation...";
             try {
-                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang.value}|${toLang.value}`);
+                const apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang.value}|${toLang.value}`;
+                const res = await fetch(apiUrl);
                 const data = await res.json();
                 outputText.value = data.responseData.translatedText;
             } catch (err) {
-                outputText.value = "翻译接口访问失败，请稍后重试";
+                outputText.value = bodyDom.classList.contains('lang-zh') ? "接口访问失败，请稍后重试" : "API connection failed, please try again later";
             }
         }
 
-        // 互换语言+互换文本
+        // 互换翻译语种功能（完全保留，翻译语种交换）
         swapLangBtn.addEventListener('click', () => {
             const tempLang = fromLang.value;
             fromLang.value = toLang.value;
@@ -278,6 +382,7 @@
         })
 
         translateBtn.addEventListener('click', runTranslate);
+        // 回车快捷翻译（Shift+Enter换行）
         inputText.addEventListener('keydown', e => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -285,19 +390,19 @@
             }
         })
 
+        // 清空输入输出框
         clearBtn.addEventListener('click', () => {
             inputText.value = '';
             outputText.value = '';
         })
 
+        // 复制译文弹窗区分中英文提示
         copyBtn.addEventListener('click', async () => {
             if (!outputText.value) return;
             await navigator.clipboard.writeText(outputText.value);
-            alert('译文复制成功');
+            if(bodyDom.classList.contains('lang-zh')) alert('转换文本复制成功！');
+            else alert('Translation copied successfully!');
         })
     </script>
-    <p style="margin-top:30px;font-size:13px;color:#777;">
-网站声明：火箭翻译仅提供免费文本在线翻译工具，本站服务器位于海外，暂未办理国内ICP备案，仅提供文字翻译技术服务，不存储用户隐私内容。若有内容问题可联系站长反馈。
-</p>
 </body>
 </html>
