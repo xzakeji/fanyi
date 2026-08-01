@@ -116,24 +116,35 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+            margin-bottom: 12px;
+        }
+        /* 朗读控制栏 */
+        .audio-control {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 26px;
+            flex-wrap: wrap;
         }
-        textarea {
-            width: 100%;
-            min-height: 240px;
-            padding: 18px;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            font-size: 16px;
-            resize: vertical;
-            background: #f8fafc;
-            transition: all 0.25s ease;
+        #readBtn {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
         }
-        textarea:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-            background: #fff;
+        #readBtn:hover {
+            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35);
+        }
+        .speed-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #475569;
+        }
+        #speedRange {
+            width: 140px;
+            cursor: pointer;
         }
         .btn-group {
             display: flex;
@@ -163,6 +174,23 @@
         }
         #copyBtn:hover {
             box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
+        }
+        textarea {
+            width: 100%;
+            min-height: 240px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 16px;
+            resize: vertical;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            background: #fff;
         }
         .tip {
             margin-top: 20px;
@@ -225,18 +253,28 @@
                 <textarea id="outputText" readonly placeholder="翻译结果将在这里展示"></textarea>
             </div>
 
+            <!-- 语音朗读区域 新增 -->
+            <div class="audio-control">
+                <button id="readBtn">🔊 朗读译文</button>
+                <div class="speed-box">
+                    <span>朗读语速：</span>
+                    <input type="range" id="speedRange" min="0.7" max="1.3" step="0.1" value="1">
+                    <span id="speedText">1.0x</span>
+                </div>
+            </div>
+
             <div class="btn-group">
                 <button id="translateBtn">开始翻译</button>
                 <button id="clearBtn">清空内容</button>
                 <button id="copyBtn">复制译文</button>
             </div>
 
-            <div class="tip">支持单词/整句翻译，免费在线翻译接口 | 访问地址：fanyi.xzakeji.icu</div>
+            <div class="tip">支持单词/整句翻译、语音朗读译文，免费在线翻译接口 | 访问地址：fanyi.xzakeji.icu</div>
 
             <div class="intro-text">
                 <h2>火箭翻译使用说明</h2>
                 <p>火箭翻译是一款轻量化免费在线翻译网站，无需下载软件、无需注册登录，打开网页即可使用。支持中文、英语、日语、韩语四种语言双向翻译，点击中间【互换语言】按钮即可快速切换翻译方向，不用手动下拉选择。不管是单个英文单词、语文短句，还是作文、小说长段落文本都能快速完成翻译。学生写作业、职场阅读外文资料、日常海外交流都可以使用火箭翻译。</p>
-                <p>网站地址 fanyi.xzakeji.icu，全程HTTPS加密访问，页面加载速度快，海外访问稳定，国外朋友也能流畅使用翻译功能。支持回车快捷翻译，一键复制翻译结果，操作简单方便。</p>
+                <p>网站地址 fanyi.xzakeji.icu，全程HTTPS加密访问，页面加载速度快，海外访问稳定，国外朋友也能流畅使用翻译功能。支持回车快捷翻译、译文语音朗读，一键复制翻译结果，操作简单方便。</p>
             </div>
         </div>
     </div>
@@ -250,8 +288,74 @@
         const clearBtn = document.getElementById('clearBtn');
         const copyBtn = document.getElementById('copyBtn');
         const swapLangBtn = document.getElementById('swapLangBtn');
+        // 语音朗读元素
+        const readBtn = document.getElementById('readBtn');
+        const speedRange = document.getElementById('speedRange');
+        const speedText = document.getElementById('speedText');
+
+        // 语音合成全局对象
+        let speechInstance = null;
+        let isReading = false;
+
+        // 更新语速显示
+        speedRange.addEventListener('input', () => {
+            speedText.textContent = speedRange.value + 'x';
+        })
+
+        // 语言代码映射（适配浏览器朗读语言）
+        function getVoiceLang(code) {
+            const map = {
+                zh: 'zh-CN',
+                en: 'en-US',
+                ja: 'ja-JP',
+                ko: 'ko-KR'
+            }
+            return map[code] || 'zh-CN';
+        }
+
+        // 朗读译文函数
+        function readTranslation() {
+            const text = outputText.value.trim();
+            if (!text) {
+                alert('暂无翻译结果，无法朗读');
+                return;
+            }
+            // 如果正在朗读，直接停止
+            if (isReading) {
+                window.speechSynthesis.cancel();
+                isReading = false;
+                readBtn.textContent = '🔊 朗读译文';
+                return;
+            }
+            // 创建朗读实例
+            speechInstance = new SpeechSynthesisUtterance(text);
+            speechInstance.lang = getVoiceLang(toLang.value);
+            speechInstance.rate = Number(speedRange.value);
+            // 朗读结束回调
+            speechInstance.onend = () => {
+                isReading = false;
+                readBtn.textContent = '🔊 朗读译文';
+            }
+            // 朗读报错回调
+            speechInstance.onerror = () => {
+                isReading = false;
+                readBtn.textContent = '🔊 朗读译文';
+                alert('语音朗读失败，当前浏览器不支持语音合成');
+            }
+            window.speechSynthesis.speak(speechInstance);
+            isReading = true;
+            readBtn.textContent = '⏹ 停止朗读';
+        }
+
+        // 停止朗读公共方法
+        function stopVoice() {
+            window.speechSynthesis.cancel();
+            isReading = false;
+            readBtn.textContent = '🔊 朗读译文';
+        }
 
         async function runTranslate() {
+            stopVoice(); // 翻译时停止朗读
             const text = inputText.value.trim();
             if (!text) {
                 alert('请输入需要翻译的内容');
@@ -269,6 +373,7 @@
 
         // 互换语言+互换文本
         swapLangBtn.addEventListener('click', () => {
+            stopVoice(); // 切换语言停止朗读
             const tempLang = fromLang.value;
             fromLang.value = toLang.value;
             toLang.value = tempLang;
@@ -287,6 +392,7 @@
         })
 
         clearBtn.addEventListener('click', () => {
+            stopVoice(); // 清空时停止朗读
             inputText.value = '';
             outputText.value = '';
         })
@@ -296,6 +402,9 @@
             await navigator.clipboard.writeText(outputText.value);
             alert('译文复制成功');
         })
+
+        // 朗读按钮点击事件
+        readBtn.addEventListener('click', readTranslation);
     </script>
     <p style="margin-top:30px;font-size:13px;color:#777;">
 网站声明：火箭翻译仅提供免费文本在线翻译工具，本站服务器位于海外，暂未办理国内ICP备案，仅提供文字翻译技术服务，不存储用户隐私内容。若有内容问题可联系站长反馈。反馈邮箱：nameiszcy@126.com
