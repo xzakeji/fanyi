@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="msvalidate.01" content="CADF2AE5B460CD6E6F81C285B25035D2" />
     <title>Rocket's Translator - Free Online Sino-English-Japanese-Korean Word Sentence Translation Tool fanyi.xzakeji.icu</title>
-    <link rel="canonical" href="https://fanyi.xzakeji.icu/">
+    <link rel="canonical" href="https://fanyi.xzakeji.icu/en.html">
     <link rel="icon" href="/favicon_001.ico" sizes="any" type="image/x-icon">
     <link rel="icon" href="/favicon_001.ico" sizes="32x32">
     <link rel="icon" href="/favicon_001.ico" sizes="16x16">
@@ -17,18 +17,18 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Rocket Translator - Free Online Chinese English Japanese Korean Word & Sentence Translation Tool">
     <meta property="og:description" content="Rocket Translator offers free online translation for Chinese, English, Japanese and Korean. Translate words and long sentences in one click, no login required.">
-    <meta property="og:url" content="https://fanyi.xzakeji.icu/">
+    <meta property="og:url" content="https://fanyi.xzakeji.icu/en.html">
     <meta property="og:site_name" content="Rocket Translator">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Rocket Translator",
-        "url": "https://fanyi.xzakeji.icu/",
+        "url": "https://fanyi.xzakeji.icu/en.html",
         "description": "Rocket Translator free online translation tool for words, sentences and paragraphs in Chinese, English, Japanese and Korean",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://fanyi.xzakeji.icu/",
+            "target": "https://fanyi.xzakeji.icu/en.html",
             "query-input": "required name=search_term_string"
         }
     }
@@ -117,24 +117,35 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+            margin-bottom: 12px;
+        }
+        /* Audio read control bar */
+        .audio-control {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 26px;
+            flex-wrap: wrap;
         }
-        textarea {
-            width: 100%;
-            min-height: 240px;
-            padding: 18px;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            font-size: 16px;
-            resize: vertical;
-            background: #f8fafc;
-            transition: all 0.25s ease;
+        #readBtn {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
         }
-        textarea:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-            background: #fff;
+        #readBtn:hover {
+            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35);
+        }
+        .speed-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #475569;
+        }
+        #speedRange {
+            width: 140px;
+            cursor: pointer;
         }
         .btn-group {
             display: flex;
@@ -164,6 +175,23 @@
         }
         #copyBtn:hover {
             box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
+        }
+        textarea {
+            width: 100%;
+            min-height: 240px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 16px;
+            resize: vertical;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            background: #fff;
         }
         .tip {
             margin-top: 20px;
@@ -199,10 +227,10 @@
     </style>
 </head>
 <body>
-    <!-- 页面最顶部切换链接 -->
+    <!-- Page top language switch link -->
     <p><a href="index.html">简体中文Chinese</a></p>
 
-    <!-- 主内容容器 -->
+    <!-- Main container -->
     <div class="container">
         <div class="card-box">
             <h1>Rocket Translator</h1>
@@ -229,18 +257,28 @@
                 <textarea id="outputText" readonly placeholder="Translation results will appear here"></textarea>
             </div>
 
+            <!-- Text-to-speech control area -->
+            <div class="audio-control">
+                <button id="readBtn">🔊 Read Translation</button>
+                <div class="speed-box">
+                    <span>Reading Speed:</span>
+                    <input type="range" id="speedRange" min="0.7" max="1.3" step="0.1" value="1">
+                    <span id="speedText">1.0x</span>
+                </div>
+            </div>
+
             <div class="btn-group">
                 <button id="translateBtn">Start Translation</button>
                 <button id="clearBtn">Clear All</button>
                 <button id="copyBtn">Copy Result</button>
             </div>
 
-            <div class="tip">Free public translation API for words & full sentences | Official website: fanyi.xzakeji.icu</div>
+            <div class="tip">Free public translation API, support text-to-speech reading | Official website: fanyi.xzakeji.icu</div>
 
             <div class="intro-text">
                 <h2>Rocket Translator User Guide</h2>
                 <p>Rocket Translator is a lightweight free online translation website. No software download or account registration required, just open the webpage to use. It supports bidirectional translation between Chinese, English, Japanese and Korean. Click the Swap Languages button to quickly switch translation directions without manual selection. You can translate single vocabulary, daily sentences, essays and long novel paragraphs rapidly. Ideal for students finishing homework, professionals reading foreign documents, and daily overseas communication.</p>
-                <p>Official website fanyi.xzakeji.icu, fully encrypted via HTTPS protocol, fast page loading speed with stable access from overseas users. Press Enter key to trigger translation quickly, one-click copy of translated text, simple and easy operation.</p>
+                <p>Official website fanyi.xzakeji.icu, fully encrypted via HTTPS protocol, fast page loading speed with stable access from overseas users. Press Enter key to trigger translation quickly, built-in text-to-speech for translation results, one-click copy of translated text, simple and easy operation.</p>
             </div>
         </div>
     </div>
@@ -254,8 +292,73 @@
         const clearBtn = document.getElementById('clearBtn');
         const copyBtn = document.getElementById('copyBtn');
         const swapLangBtn = document.getElementById('swapLangBtn');
+        // Voice read elements
+        const readBtn = document.getElementById('readBtn');
+        const speedRange = document.getElementById('speedRange');
+        const speedText = document.getElementById('speedText');
+
+        // Global speech object
+        let speechInstance = null;
+        let isReading = false;
+
+        // Update speed display
+        speedRange.addEventListener('input', () => {
+            speedText.textContent = speedRange.value + 'x';
+        })
+
+        // Match language code for browser speech synthesis
+        function getVoiceLang(code) {
+            const map = {
+                zh: 'zh-CN',
+                en: 'en-US',
+                ja: 'ja-JP',
+                ko: 'ko-KR'
+            }
+            return map[code] || 'en-US';
+        }
+
+        // Read translation text
+        function readTranslation() {
+            const text = outputText.value.trim();
+            if (!text) {
+                alert('No translation content to read');
+                return;
+            }
+            // Stop speech if playing
+            if (isReading) {
+                window.speechSynthesis.cancel();
+                isReading = false;
+                readBtn.textContent = '🔊 Read Translation';
+                return;
+            }
+            speechInstance = new SpeechSynthesisUtterance(text);
+            speechInstance.lang = getVoiceLang(toLang.value);
+            speechInstance.rate = Number(speedRange.value);
+            // Callback when reading finished
+            speechInstance.onend = () => {
+                isReading = false;
+                readBtn.textContent = '🔊 Read Translation';
+            }
+            // Speech error callback
+            speechInstance.onerror = () => {
+                isReading = false;
+                readBtn.textContent = '🔊 Read Translation';
+                alert('Text-to-speech failed, your browser does not support speech synthesis');
+            }
+            window.speechSynthesis.speak(speechInstance);
+            isReading = true;
+            readBtn.textContent = '⏹ Stop Reading';
+        }
+
+        // Force stop speech
+        function stopVoice() {
+            window.speechSynthesis.cancel();
+            isReading = false;
+            readBtn.textContent = '🔊 Read Translation';
+        }
 
         async function runTranslate() {
+            stopVoice(); // Stop voice when new translation starts
             const text = inputText.value.trim();
             if (!text) {
                 alert('Please enter text to translate');
@@ -271,8 +374,9 @@
             }
         }
 
-        // Swap language selection & swap text content
+        // Swap language & swap text
         swapLangBtn.addEventListener('click', () => {
+            stopVoice();
             const tempLang = fromLang.value;
             fromLang.value = toLang.value;
             toLang.value = tempLang;
@@ -291,6 +395,7 @@
         })
 
         clearBtn.addEventListener('click', () => {
+            stopVoice();
             inputText.value = '';
             outputText.value = '';
         })
@@ -300,6 +405,9 @@
             await navigator.clipboard.writeText(outputText.value);
             alert('Translation copied successfully');
         })
+
+        // Read button click event
+        readBtn.addEventListener('click', readTranslation);
     </script>
 
     <p style="margin-top:30px;font-size:13px;color:#777;">
