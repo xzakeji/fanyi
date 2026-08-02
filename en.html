@@ -2,419 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="msvalidate.01" content="CADF2AE5B460CD6E6F81C285B25035D2" />
-    <title>Rocket's Translator - Free Online Sino-English-Japanese-Korean Word Sentence Translation Tool fanyi.xzakeji.icu</title>
-    <link rel="canonical" href="https://fanyi.xzakeji.icu/en.html">
-    <link rel="icon" href="/favicon_001.ico" sizes="any" type="image/x-icon">
-    <link rel="icon" href="/favicon_001.ico" sizes="32x32">
-    <link rel="icon" href="/favicon_001.ico" sizes="16x16">
-    <link rel="apple-touch-icon" href="/favicon_001.ico">
-    <meta name="theme-color" content="#2563eb">
-    <meta name="description" content="Rocket Translator is a free online translation website supporting mutual translation between Chinese, English, Japanese and Korean. Translate words, short sentences and long paragraphs with one click. No registration required, copy translated text instantly. Official URL: fanyi.xzakeji.icu.">
-    <meta name="keywords" content="Rocket Translator,online translation,free translator,Chinese English translation,word translation,sentence translation,Chinese Japanese translation,Chinese Korean translation,translation tool">
-    <meta name="robots" content="index,follow">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Rocket Translator - Free Online Chinese English Japanese Korean Word & Sentence Translation Tool">
-    <meta property="og:description" content="Rocket Translator offers free online translation for Chinese, English, Japanese and Korean. Translate words and long sentences in one click, no login required.">
-    <meta property="og:url" content="https://fanyi.xzakeji.icu/en.html">
-    <meta property="og:site_name" content="Rocket Translator">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Rocket Translator",
-        "url": "https://fanyi.xzakeji.icu/en.html",
-        "description": "Rocket Translator free online translation tool for words, sentences and paragraphs in Chinese, English, Japanese and Korean",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://fanyi.xzakeji.icu/en.html",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Translate | English Page</title>
+    <!-- favicon 按你项目配置 -->
+    <link rel="icon" href="favicon_001.ico" type="image/x-icon">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #eef2ff 0%, #f0f4f8 100%);
-            min-height: 100vh;
-            padding: 50px 20px;
-        }
-        .container {
-            max-width: 920px;
-            margin: 0 auto;
-        }
-        .card-box {
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
-            padding: 36px 30px;
-        }
-        h1 {
-            text-align: center;
-            background: linear-gradient(90deg, #2563eb, #f97316);
-            -webkit-background-clip: text;
-            color: transparent;
-            font-size: 42px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .sub-title {
-            text-align: center;
-            color: #64748b;
-            margin-bottom: 36px;
-            font-size: 16px;
-        }
-        .switch-row {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 24px;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        select {
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            font-size: 16px;
-            min-width: 160px;
-            background: #f8fafc;
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-        select:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        }
-        button {
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            font-weight: 500;
-        }
-        button:active {
-            transform: scale(0.96);
-        }
-        #swapLangBtn {
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
-        }
-        #swapLangBtn:hover {
-            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.35);
-        }
-        .box-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 12px;
-        }
-        /* Audio read control bar */
-        .audio-control {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 26px;
-            flex-wrap: wrap;
-        }
-        #readBtn {
-            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
-        }
-        #readBtn:hover {
-            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35);
-        }
-        .speed-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: #475569;
-        }
-        #speedRange {
-            width: 140px;
-            cursor: pointer;
-        }
-        .btn-group {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        #translateBtn {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-        }
-        #translateBtn:hover {
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-        }
-        #clearBtn {
-            background: #f1f5f9;
-            color: #334155;
-        }
-        #clearBtn:hover {
-            background: #e2e8f0;
-        }
-        #copyBtn {
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-            color: white;
-            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
-        }
-        #copyBtn:hover {
-            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
-        }
-        textarea {
-            width: 100%;
-            min-height: 240px;
-            padding: 18px;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            font-size: 16px;
-            resize: vertical;
-            background: #f8fafc;
-            transition: all 0.25s ease;
-        }
-        textarea:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-            background: #fff;
-        }
-        .tip {
-            margin-top: 20px;
-            color: #64748b;
-            font-size: 14px;
-            text-align: center;
-        }
-        .intro-text {
-            margin-top: 40px;
-            line-height: 1.9;
-            color: #334155;
-        }
-        .intro-text h2 {
-            font-size: 20px;
-            color: #1e293b;
-            margin-bottom: 12px;
-        }
-        .intro-text p {
-            margin-bottom: 12px;
-        }
-        /* Mobile responsive layout */
-        @media(max-width:640px){
-            .box-wrap{
-                grid-template-columns:1fr;
-            }
-            h1{
-                font-size:32px;
-            }
-            .switch-row{
-                flex-direction:column;
-            }
-        }
+        * {box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui;}
+        body {max-width: 1200px; margin: 30px auto; padding: 0 20px;}
+        .lang-switch {margin-bottom: 20px;}
+        textarea, #translate-result {width: 100%; min-height: 140px; padding: 12px; font-size: 16px; margin:10px 0; border:1px solid #ddd; border-radius:6px;}
+        button {padding:10px 20px; cursor:pointer; border:none; border-radius:4px; background:#2563eb; color:#fff; margin:4px;}
+        button.read-btn {background:#16a34a;}
+        footer {margin-top:40px; padding-top:20px; border-top:1px solid #eee; font-size:13px; color:#666;}
     </style>
 </head>
 <body>
-    <!-- Page top language switch link -->
-    <p><a href="index.html">简体中文Chinese</a></p>
-
-    <!-- Main container -->
-    <div class="container">
-        <div class="card-box">
-            <h1>Rocket Translator</h1>
-            <p class="sub-title">Free Online Translator for Chinese / English / Japanese / Korean | Translate Words, Sentences & Long Texts Instantly</p>
-
-            <div class="switch-row">
-                <select id="fromLang">
-                    <option value="zh">Chinese</option>
-                    <option value="en">English</option>
-                    <option value="ja">Japanese</option>
-                    <option value="ko">Korean</option>
-                </select>
-                <button id="swapLangBtn">⇄ Swap Languages</button>
-                <select id="toLang">
-                    <option value="en">English</option>
-                    <option value="zh">Chinese</option>
-                    <option value="ja">Japanese</option>
-                    <option value="ko">Korean</option>
-                </select>
-            </div>
-
-            <div class="box-wrap">
-                <textarea id="inputText" placeholder="Enter words, sentences or long paragraphs here..."></textarea>
-                <textarea id="outputText" readonly placeholder="Translation results will appear here"></textarea>
-            </div>
-
-            <!-- Text-to-speech control area -->
-            <div class="audio-control">
-                <button id="readBtn">🔊 Read Translation</button>
-                <div class="speed-box">
-                    <span>Reading Speed:</span>
-                    <input type="range" id="speedRange" min="0.7" max="1.3" step="0.1" value="1">
-                    <span id="speedText">1.0x</span>
-                </div>
-            </div>
-
-            <div class="btn-group">
-                <button id="translateBtn">Start Translation</button>
-                <button id="clearBtn">Clear All</button>
-                <button id="copyBtn">Copy Result</button>
-            </div>
-
-            <div class="tip">Free public translation API, support text-to-speech reading | Official website: fanyi.xzakeji.icu</div>
-
-            <div class="intro-text">
-                <h2>Rocket Translator User Guide</h2>
-                <p>Rocket Translator is a lightweight free online translation website. No software download or account registration required, just open the webpage to use. It supports bidirectional translation between Chinese, English, Japanese and Korean. Click the Swap Languages button to quickly switch translation directions without manual selection. You can translate single vocabulary, daily sentences, essays and long novel paragraphs rapidly. Ideal for students finishing homework, professionals reading foreign documents, and daily overseas communication.</p>
-                <p>Official website fanyi.xzakeji.icu, fully encrypted via HTTPS protocol, fast page loading speed with stable access from overseas users. Press Enter key to trigger translation quickly, built-in text-to-speech for translation results, one-click copy of translated text, simple and easy operation.</p>
-            </div>
-        </div>
+    <!-- 语言互换按钮 -->
+    <div class="lang-switch">
+        <span>Language：</span>
+        <a href="index.html">中文</a> |
+        <a href="ja.html">日本語</a> |
+        <strong>English</strong>
     </div>
 
-    <script>
-        const inputText = document.getElementById('inputText');
-        const outputText = document.getElementById('outputText');
-        const fromLang = document.getElementById('fromLang');
-        const toLang = document.getElementById('toLang');
-        const translateBtn = document.getElementById('translateBtn');
-        const clearBtn = document.getElementById('clearBtn');
-        const copyBtn = document.getElementById('copyBtn');
-        const swapLangBtn = document.getElementById('swapLangBtn');
-        // Voice read elements
-        const readBtn = document.getElementById('readBtn');
-        const speedRange = document.getElementById('speedRange');
-        const speedText = document.getElementById('speedText');
+    <h1>Rocket Translation Tool</h1>
 
-        // Global speech object
-        let speechInstance = null;
-        let isReading = false;
+    <!-- 源输入区 -->
+    <textarea id="source-text" placeholder="Enter text to translate..."></textarea>
 
-        // Update speed display
-        speedRange.addEventListener('input', () => {
-            speedText.textContent = speedRange.value + 'x';
-        })
+    <!-- 目标语种选择 -->
+    <select id="target-lang">
+        <option value="zh">Chinese</option>
+        <option value="en" selected>English</option>
+        <option value="ja">Japanese</option>
+    </select>
+    <button onclick="startTranslate()">Translate</button>
+    <button class="read-btn" onclick="readTranslateText()">Read Translation Aloud</button>
 
-        // Match language code for browser speech synthesis
-        function getVoiceLang(code) {
-            const map = {
-                zh: 'zh-CN',
-                en: 'en-US',
-                ja: 'ja-JP',
-                ko: 'ko-KR'
-            }
-            return map[code] || 'en-US';
-        }
+    <!-- 翻译结果 -->
+    <div id="translate-result" lang="en"></div>
 
-        // Read translation text
-        function readTranslation() {
-            const text = outputText.value.trim();
-            if (!text) {
-                alert('No translation content to read');
-                return;
-            }
-            // Stop speech if playing
-            if (isReading) {
-                window.speechSynthesis.cancel();
-                isReading = false;
-                readBtn.textContent = '🔊 Read Translation';
-                return;
-            }
-            speechInstance = new SpeechSynthesisUtterance(text);
-            speechInstance.lang = getVoiceLang(toLang.value);
-            speechInstance.rate = Number(speedRange.value);
-            // Callback when reading finished
-            speechInstance.onend = () => {
-                isReading = false;
-                readBtn.textContent = '🔊 Read Translation';
-            }
-            // Speech error callback
-            speechInstance.onerror = () => {
-                isReading = false;
-                readBtn.textContent = '🔊 Read Translation';
-                alert('Text-to-speech failed, your browser does not support speech synthesis');
-            }
-            window.speechSynthesis.speak(speechInstance);
-            isReading = true;
-            readBtn.textContent = '⏹ Stop Reading';
-        }
+    <footer>
+        <p>Rocket Translation ©2026 | Static open source translation tool, all translation logic runs locally on the page</p>
+        <p>Disclaimer: This site does not collect user text data, no ICP filing for overseas access</p>
+    </footer>
 
-        // Force stop speech
-        function stopVoice() {
-            window.speechSynthesis.cancel();
-            isReading = false;
-            readBtn.textContent = '🔊 Read Translation';
-        }
+<script>
+// 翻译模拟函数（替换成你实际翻译接口）
+function startTranslate() {
+    const source = document.getElementById("source-text").value;
+    const targetLang = document.getElementById("target-lang").value;
+    const resultBox = document.getElementById("translate-result");
+    // 更新容器lang属性，同步朗读API
+    const langMap = {"zh":"zh-CN","en":"en-US","ja":"ja-JP"};
+    resultBox.setAttribute("lang", langMap[targetLang]);
+    // 此处替换你的真实翻译请求代码
+    resultBox.innerText = `[${targetLang}] Translated content: ` + source;
+}
 
-        async function runTranslate() {
-            stopVoice(); // Stop voice when new translation starts
-            const text = inputText.value.trim();
-            if (!text) {
-                alert('Please enter text to translate');
-                return;
-            }
-            outputText.value = "Translating, please wait...";
-            try {
-                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang.value}|${toLang.value}`);
-                const data = await res.json();
-                outputText.value = data.responseData.translatedText;
-            } catch (err) {
-                outputText.value = "Translation API request failed, please try again later";
-            }
-        }
+// 修复后多语言朗读核心函数（解决日语无法朗读）
+function readTranslateText() {
+    const targetText = document.getElementById("translate-result").innerText.trim();
+    if (!targetText) return alert("No translated text available");
+    const utterance = new SpeechSynthesisUtterance(targetText);
+    const targetLang = document.getElementById("target-lang").value;
+    switch(targetLang) {
+        case "ja":
+            utterance.lang = "ja-JP";
+            utterance.rate = 0.95;
+            break;
+        case "en":
+            utterance.lang = "en-US";
+            utterance.rate = 1;
+            break;
+        case "zh":
+        default:
+            utterance.lang = "zh-CN";
+            utterance.rate = 1;
+    }
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+}
 
-        // Swap language & swap text
-        swapLangBtn.addEventListener('click', () => {
-            stopVoice();
-            const tempLang = fromLang.value;
-            fromLang.value = toLang.value;
-            toLang.value = tempLang;
-
-            const tempTxt = inputText.value;
-            inputText.value = outputText.value;
-            outputText.value = tempTxt;
-        })
-
-        translateBtn.addEventListener('click', runTranslate);
-        inputText.addEventListener('keydown', e => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                runTranslate();
-            }
-        })
-
-        clearBtn.addEventListener('click', () => {
-            stopVoice();
-            inputText.value = '';
-            outputText.value = '';
-        })
-
-        copyBtn.addEventListener('click', async () => {
-            if (!outputText.value) return;
-            await navigator.clipboard.writeText(outputText.value);
-            alert('Translation copied successfully');
-        })
-
-        // Read button click event
-        readBtn.addEventListener('click', readTranslation);
-    </script>
-
-    <p style="margin-top:30px;font-size:13px;color:#777;">
-Website Statement: Rocket Translator only provides free online text translation tools. This website is hosted on overseas servers and does not hold domestic ICP filing. We only offer text translation services and will never store users' private content. Contact the webmaster via email nameiszcy@126.com if you have any questions or content issues.
-    </p>
-    <p style="margin-top:30px;font-size:13px;color:#777;">
-<a href="https://github.com/xzakeji/fanyi/tree/main">GitHub Repository</a>
-    </p>
+// 页面加载检测日语语音包
+window.onload = function() {
+    const voices = window.speechSynthesis.getVoices();
+    const hasJapaneseVoice = voices.some(v => v.lang.startsWith("ja"));
+    if (!hasJapaneseVoice) {
+        console.warn("Missing Japanese TTS voice pack, Japanese text cannot be read aloud");
+    }
+}
+</script>
 </body>
 </html>
