@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="msvalidate.01" content="CADF2AE5B460CD6E6F81C285B25035D2" />
-    <title>Rocket's Translator - Free Online Sino-English-Japanese-Korean Word Sentence Translation Tool fanyi.xzakeji.icu</title>
-    <link rel="canonical" href="https://fanyi.xzakeji.icu/en.html">
+    <title>火箭翻译 - 免费在线中英日韩单词句子翻译工具 fanyi.xzakeji.icu</title>
+    <link rel="canonical" href="https://fanyi.xzakeji.icu/">
     <link rel="icon" href="/favicon_001.ico" sizes="any" type="image/x-icon">
     <link rel="icon" href="/favicon_001.ico" sizes="32x32">
     <link rel="icon" href="/favicon_001.ico" sizes="16x16">
     <link rel="apple-touch-icon" href="/favicon_001.ico">
     <meta name="theme-color" content="#2563eb">
-    <meta name="description" content="Rocket Translator is a free online translation website supporting mutual translation between Chinese, English, Japanese and Korean. Translate words, short sentences and long paragraphs with one click. No registration required, copy translated text instantly. Official URL: fanyi.xzakeji.icu.">
-    <meta name="keywords" content="Rocket Translator,online translation,free translator,Chinese English translation,word translation,sentence translation,Chinese Japanese translation,Chinese Korean translation,translation tool">
+    <meta name="description" content="火箭翻译是免费在线翻译网站，支持中文、英语、日语、韩语互译，单词、短句、长段落一键翻译，无需注册，复制译文，访问地址fanyi.xzakeji.icu。">
+    <meta name="keywords" content="火箭翻译,在线翻译,免费翻译,中英翻译,单词翻译,句子翻译,中日翻译,中韩翻译,翻译工具">
     <meta name="robots" content="index,follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Rocket Translator - Free Online Chinese English Japanese Korean Word & Sentence Translation Tool">
-    <meta property="og:description" content="Rocket Translator offers free online translation for Chinese, English, Japanese and Korean. Translate words and long sentences in one click, no login required.">
-    <meta property="og:url" content="https://fanyi.xzakeji.icu/en.html">
-    <meta property="og:site_name" content="Rocket Translator">
+    <meta property="og:title" content="火箭翻译 - 免费在线中英日韩单词句子翻译工具">
+    <meta property="og:description" content="火箭翻译免费在线翻译，支持中英日韩互译，单词、长句一键翻译，免登录直接使用。">
+    <meta property="og:url" content="https://fanyi.xzakeji.icu/">
+    <meta property="og:site_name" content="火箭翻译">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Rocket Translator",
-        "url": "https://fanyi.xzakeji.icu/en.html",
-        "description": "Rocket Translator free online translation tool for words, sentences and paragraphs in Chinese, English, Japanese and Korean",
+        "name": "火箭翻译",
+        "url": "https://fanyi.xzakeji.icu/",
+        "description": "火箭翻译免费在线翻译工具，支持中英日韩单词、句子段落翻译",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://fanyi.xzakeji.icu/en.html",
+            "target": "https://fanyi.xzakeji.icu/",
             "query-input": "required name=search_term_string"
         }
     }
@@ -38,7 +37,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
         }
         body {
             background: linear-gradient(135deg, #eef2ff 0%, #f0f4f8 100%);
@@ -119,7 +118,7 @@
             gap: 24px;
             margin-bottom: 12px;
         }
-        /* Audio read control bar */
+        /* 朗读控制栏 */
         .audio-control {
             display: flex;
             gap: 12px;
@@ -212,7 +211,7 @@
         .intro-text p {
             margin-bottom: 12px;
         }
-        /* Mobile responsive layout */
+        /* 移动端自适应 */
         @media(max-width:640px){
             .box-wrap{
                 grid-template-columns:1fr;
@@ -227,58 +226,55 @@
     </style>
 </head>
 <body>
-    <!-- Page top language switch link -->
-    <p><a href="index.html">简体中文Chinese</a></p>
-
-    <!-- Main container -->
+     <p><a href="en.html">英语English</a></p>
     <div class="container">
         <div class="card-box">
-            <h1>Rocket Translator</h1>
-            <p class="sub-title">Free Online Translator for Chinese / English / Japanese / Korean | Translate Words, Sentences & Long Texts Instantly</p>
+            <h1>火箭翻译</h1>
+            <p class="sub-title">免费在线中英日韩互译工具 | 单词、短句、长文本一键翻译</p>
 
             <div class="switch-row">
                 <select id="fromLang">
-                    <option value="zh">Chinese</option>
-                    <option value="en">English</option>
-                    <option value="ja">Japanese</option>
-                    <option value="ko">Korean</option>
+                    <option value="zh">中文</option>
+                    <option value="en">英语</option>
+                    <option value="ja">日语</option>
+                    <option value="ko">韩语</option>
                 </select>
-                <button id="swapLangBtn">⇄ Swap Languages</button>
+                <button id="swapLangBtn">⇄ 互换语言</button>
                 <select id="toLang">
-                    <option value="en">English</option>
-                    <option value="zh">Chinese</option>
-                    <option value="ja">Japanese</option>
-                    <option value="ko">Korean</option>
+                    <option value="en">英语</option>
+                    <option value="zh">中文</option>
+                    <option value="ja">日语</option>
+                    <option value="ko">韩语</option>
                 </select>
             </div>
 
             <div class="box-wrap">
-                <textarea id="inputText" placeholder="Enter words, sentences or long paragraphs here..."></textarea>
-                <textarea id="outputText" readonly placeholder="Translation results will appear here"></textarea>
+                <textarea id="inputText" placeholder="在此输入单词、短句、长段落..."></textarea>
+                <textarea id="outputText" readonly placeholder="翻译结果将在这里展示"></textarea>
             </div>
 
-            <!-- Text-to-speech control area -->
+            <!-- 语音朗读区域 新增 -->
             <div class="audio-control">
-                <button id="readBtn">🔊 Read Translation</button>
+                <button id="readBtn">🔊 朗读译文</button>
                 <div class="speed-box">
-                    <span>Reading Speed:</span>
+                    <span>朗读语速：</span>
                     <input type="range" id="speedRange" min="0.7" max="1.3" step="0.1" value="1">
                     <span id="speedText">1.0x</span>
                 </div>
             </div>
 
             <div class="btn-group">
-                <button id="translateBtn">Start Translation</button>
-                <button id="clearBtn">Clear All</button>
-                <button id="copyBtn">Copy Result</button>
+                <button id="translateBtn">开始翻译</button>
+                <button id="clearBtn">清空内容</button>
+                <button id="copyBtn">复制译文</button>
             </div>
 
-            <div class="tip">Free public translation API, support text-to-speech reading | Official website: fanyi.xzakeji.icu</div>
+            <div class="tip">支持单词/整句翻译、语音朗读译文，免费在线翻译接口 | 访问地址：fanyi.xzakeji.icu</div>
 
             <div class="intro-text">
-                <h2>Rocket Translator User Guide</h2>
-                <p>Rocket Translator is a lightweight free online translation website. No software download or account registration required, just open the webpage to use. It supports bidirectional translation between Chinese, English, Japanese and Korean. Click the Swap Languages button to quickly switch translation directions without manual selection. You can translate single vocabulary, daily sentences, essays and long novel paragraphs rapidly. Ideal for students finishing homework, professionals reading foreign documents, and daily overseas communication.</p>
-                <p>Official website fanyi.xzakeji.icu, fully encrypted via HTTPS protocol, fast page loading speed with stable access from overseas users. Press Enter key to trigger translation quickly, built-in text-to-speech for translation results, one-click copy of translated text, simple and easy operation.</p>
+                <h2>火箭翻译使用说明</h2>
+                <p>火箭翻译是一款轻量化免费在线翻译网站，无需下载软件、无需注册登录，打开网页即可使用。支持中文、英语、日语、韩语四种语言双向翻译，点击中间【互换语言】按钮即可快速切换翻译方向，不用手动下拉选择。不管是单个英文单词、语文短句，还是作文、小说长段落文本都能快速完成翻译。学生写作业、职场阅读外文资料、日常海外交流都可以使用火箭翻译。</p>
+                <p>网站地址 fanyi.xzakeji.icu，全程HTTPS加密访问，页面加载速度快，海外访问稳定，国外朋友也能流畅使用翻译功能。支持回车快捷翻译、译文语音朗读，一键复制翻译结果，操作简单方便。</p>
             </div>
         </div>
     </div>
@@ -292,21 +288,21 @@
         const clearBtn = document.getElementById('clearBtn');
         const copyBtn = document.getElementById('copyBtn');
         const swapLangBtn = document.getElementById('swapLangBtn');
-        // Voice read elements
+        // 语音朗读元素
         const readBtn = document.getElementById('readBtn');
         const speedRange = document.getElementById('speedRange');
         const speedText = document.getElementById('speedText');
 
-        // Global speech object
+        // 语音合成全局对象
         let speechInstance = null;
         let isReading = false;
 
-        // Update speed display
+        // 更新语速显示
         speedRange.addEventListener('input', () => {
             speedText.textContent = speedRange.value + 'x';
         })
 
-        // Match language code for browser speech synthesis
+        // 语言代码映射（适配浏览器朗读语言）
         function getVoiceLang(code) {
             const map = {
                 zh: 'zh-CN',
@@ -314,69 +310,70 @@
                 ja: 'ja-JP',
                 ko: 'ko-KR'
             }
-            return map[code] || 'en-US';
+            return map[code] || 'zh-CN';
         }
 
-        // Read translation text
+        // 朗读译文函数
         function readTranslation() {
             const text = outputText.value.trim();
             if (!text) {
-                alert('No translation content to read');
+                alert('暂无翻译结果，无法朗读');
                 return;
             }
-            // Stop speech if playing
+            // 如果正在朗读，直接停止
             if (isReading) {
                 window.speechSynthesis.cancel();
                 isReading = false;
-                readBtn.textContent = '🔊 Read Translation';
+                readBtn.textContent = '🔊 朗读译文';
                 return;
             }
+            // 创建朗读实例
             speechInstance = new SpeechSynthesisUtterance(text);
             speechInstance.lang = getVoiceLang(toLang.value);
             speechInstance.rate = Number(speedRange.value);
-            // Callback when reading finished
+            // 朗读结束回调
             speechInstance.onend = () => {
                 isReading = false;
-                readBtn.textContent = '🔊 Read Translation';
+                readBtn.textContent = '🔊 朗读译文';
             }
-            // Speech error callback
+            // 朗读报错回调
             speechInstance.onerror = () => {
                 isReading = false;
-                readBtn.textContent = '🔊 Read Translation';
-                alert('Text-to-speech failed, your browser does not support speech synthesis');
+                readBtn.textContent = '🔊 朗读译文';
+                alert('语音朗读失败，当前浏览器不支持语音合成');
             }
             window.speechSynthesis.speak(speechInstance);
             isReading = true;
-            readBtn.textContent = '⏹ Stop Reading';
+            readBtn.textContent = '⏹ 停止朗读';
         }
 
-        // Force stop speech
+        // 停止朗读公共方法
         function stopVoice() {
             window.speechSynthesis.cancel();
             isReading = false;
-            readBtn.textContent = '🔊 Read Translation';
+            readBtn.textContent = '🔊 朗读译文';
         }
 
         async function runTranslate() {
-            stopVoice(); // Stop voice when new translation starts
+            stopVoice(); // 翻译时停止朗读
             const text = inputText.value.trim();
             if (!text) {
-                alert('Please enter text to translate');
+                alert('请输入需要翻译的内容');
                 return;
             }
-            outputText.value = "Translating, please wait...";
+            outputText.value = "翻译加载中...";
             try {
                 const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang.value}|${toLang.value}`);
                 const data = await res.json();
                 outputText.value = data.responseData.translatedText;
             } catch (err) {
-                outputText.value = "Translation API request failed, please try again later";
+                outputText.value = "翻译接口访问失败，请稍后重试";
             }
         }
 
-        // Swap language & swap text
+        // 互换语言+互换文本
         swapLangBtn.addEventListener('click', () => {
-            stopVoice();
+            stopVoice(); // 切换语言停止朗读
             const tempLang = fromLang.value;
             fromLang.value = toLang.value;
             toLang.value = tempLang;
@@ -395,7 +392,7 @@
         })
 
         clearBtn.addEventListener('click', () => {
-            stopVoice();
+            stopVoice(); // 清空时停止朗读
             inputText.value = '';
             outputText.value = '';
         })
@@ -403,18 +400,17 @@
         copyBtn.addEventListener('click', async () => {
             if (!outputText.value) return;
             await navigator.clipboard.writeText(outputText.value);
-            alert('Translation copied successfully');
+            alert('译文复制成功');
         })
 
-        // Read button click event
+        // 朗读按钮点击事件
         readBtn.addEventListener('click', readTranslation);
     </script>
-
     <p style="margin-top:30px;font-size:13px;color:#777;">
-Website Statement: Rocket Translator only provides free online text translation tools. This website is hosted on overseas servers and does not hold domestic ICP filing. We only offer text translation services and will never store users' private content. Contact the webmaster via email nameiszcy@126.com if you have any questions or content issues.
-    </p>
+网站声明：火箭翻译仅提供免费文本在线翻译工具，本站服务器位于海外，暂未办理国内ICP备案，仅提供文字翻译技术服务，不存储用户隐私内容。若有内容问题可联系站长反馈。反馈邮箱：nameiszcy@126.com
+</p>
     <p style="margin-top:30px;font-size:13px;color:#777;">
-<a href="https://github.com/xzakeji/fanyi/tree/main">GitHub Repository</a>
-    </p>
+<a href="https://github.com/xzakeji/fanyi/tree/main">GitHub</a>
+</p>
 </body>
 </html>
